@@ -1,0 +1,9 @@
+my_project/
+│
+├── static/           # Folder for CSS and JavaScript files
+│   └── styles.css    # Your CSS file
+│
+├── templates/        # Folder for HTML files
+│   └── index.html    # Your HTML file
+│
+└── app.py            # Your main Python file

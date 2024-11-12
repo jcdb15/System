@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Members Excel</title>
+</head>
+<body>
+    <button id="downloadBtn">Download Members List as Excel</button>
+
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            fetch('/download-excel')
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url; 
+                    a.download = 'members_list.xlsx';  // Name of the file to be downloaded
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(err => console.error('Error downloading Excel:', err));
+        });
+    </script>
+
+    
+</body>
+</html>
